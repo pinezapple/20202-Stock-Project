@@ -76,9 +76,9 @@ var Charts = (function() {
 						line: {
 							tension: .4,
 							borderWidth: 4,
-							borderColor: colors.theme['primary'],
+							// borderColor: colors.theme['primary'],
 							backgroundColor: colors.transparent,
-							borderCapStyle: 'rounded'
+							// borderCapStyle: 'rounded'
 						},
 						rectangle: {
 							backgroundColor: colors.theme['warning']

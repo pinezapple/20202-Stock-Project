@@ -2,7 +2,7 @@
 // Charts
 //
 
-'use strict';
+// 'use strict';
 
 //
 // Sales chart
@@ -12,7 +12,7 @@ var LineChart = (function() {
 
 	// Variables
 
-	var $chart = $('#chart-line');
+	var $chart = $('#chart-stock');
 
 
 	// Methods
@@ -34,10 +34,21 @@ var LineChart = (function() {
 				}
 			},
 			data: {
-				labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+				labels: ['Date 1','Date 2','Date 3','Date 4','Date 5'],
 				datasets: [{
-					label: 'Performance',
-					data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
+					label: 'Predicted price',
+					data: [10, 20, 10, 30, 15],
+					backgroundColor: 'rgb(255, 99, 132)',
+    				borderColor: 'rgb(255, 99, 132)',
+					fill: false,
+					tension: 0.1
+
+				},
+				{
+					label: 'Actual price',
+					data: [30, 40, 15, 34, 17],
+					tension: 0.1
+
 				}]
 			}
 		});
