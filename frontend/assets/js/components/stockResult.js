@@ -1,7 +1,7 @@
 let resultUrl = 'http://localhost:3000/stock_predicted'
 let chart = document.getElementById('chart-stock-1')
 
-getData()
+
 
 let ctx = document.getElementById('chart-stock-1').getContext('2d');
 let myChart = new Chart(ctx, {
@@ -67,7 +67,7 @@ function addPrice(chart,arr1,arr2,arr3 ){
 async function getData(){
   const res = await fetch (resultUrl,
       {
-         method: 'GET',
+         method: 'POST',
         credentials: "omit",
         headers: {
            'Content-Type': 'application/json',
@@ -93,6 +93,7 @@ async function getData(){
   document.getElementById("stockName").innerHTML = `Ticket: ${ticket} from ${data.timestamp[0]} to ${data.timestamp[data.timestamp.length -1]}`
 }
 
+getData().catch((err)=>{alert("An error has occured",err); console.log(err)})
 
 
 

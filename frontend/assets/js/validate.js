@@ -1,9 +1,13 @@
 const btn = document.getElementById("btn");
-btn.addEventListener("click", isValid, false);
-let url ='http://localhost:3000/stockInput'
+const form = document.querySelector("#stockInput")
+form.addEventListener("submit", (e)=> e.stopPropagation());
+btn.addEventListener("submit",(e)=>e.preventDefault())
+btn.addEventListener("click", isValid);
 
-function isValid(){
+let url ='http://localhost:3000/stock_input'
 
+function isValid(e){
+  e.preventDefault()
     let startDate = new Date(document.getElementById('startDate').value)
     let endDate = new Date (document.getElementById('endDate').value)
     let endDateMax = new Date()
@@ -31,21 +35,22 @@ function isValid(){
               },
               body:JSON.stringify({from:from,to:to,name:name})
             }
-            ).then((res) => res.json())
-            .then( function (res){
-                if (!res.ok) {
-                    const message = `An error has occured: ${res.status}`;
-                    //alert(message)
-                    throw new Error(message);
-                  } else {
-                    window.location('result.html');
-                  }
-             }
-             
-        )
-           
-            .catch((err)=>{alert("Đã xảy ra lỗi",err); console.log(err)})
+            )
+            .then((res) => {
+              if (!res.ok) {
+                const message = `An error has occured: ${res.status}`;
+                alert('Something went wrong')
+                throw new Error(message);
+              } else {
+                window.location.href = 'result.html'
+                // console.log(res.status)
+              }
+            })
+            .catch((err)=>{
+              console.log(err)
+              alert("An error has occured",err); 
+           })
            }
-        
-    
     }
+
+

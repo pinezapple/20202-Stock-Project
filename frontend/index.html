@@ -101,8 +101,7 @@
                       </div>
 
                       <div class="card-body">
-                        <form>
-                        
+                        <form id = "stockInput">
                           <div class="row input-daterange datepicker align-items-center">
                             <div class="col">
                               <div class="form-group">
@@ -121,14 +120,39 @@
                           <div class="row">
                             <div class="col">
                               <div class="form-group">
-                                <label class="form-control-label">Ticket</label>
+                                <label class="form-control-label">Ticker</label>
                                 <select class="form-control" data-toggle="select" id="stock">
-                                  <option>Alerts</option>
-                                  <option>Badges</option>
-                                  <option>Buttons</option>
-                                  <option>Cards</option>
-                                  <option>Forms</option>
-                                  <option>Modals</option>
+                                  <option value="GOOG">GOOG</option>
+                                  <option value="FSLY">FSLY</option>
+                                  <option value="TBIO">TBIO</option>
+                                  <option value="INO">INO</option>
+                                  <option value="AAPL">AAPL</option>
+                                  <option value="CBL">CBL</option>
+                                  <option value="PLUG">PLUG</option>
+                                  <option value="MSFT">MSFT</option>
+                                  <option value="BRN">BRN</option>
+                                  <option value="LK">LK</option>
+                                  <option value="FFHL">FFHL</option>
+                                  <option value="LLEX">LLEX</option>
+                                  <option value="SPR">SPR</option>
+                                  <option value="WKHS">WKHS</option>
+                                  <option value="SNY">SNY</option>
+                                  <option value="KIRK">KIRK</option>
+                                  <option value="SONO">SONO</option>
+                                  <option value="SNSS">SNSS</option>
+                                  <option value="FRSX">FRSX</option>
+                                  <option value="PTN">PTN</option>
+                                  <option value="DLOC">DLOC</option>
+                                  <option value="NNDM">NNDM</option>
+                                  <option value="PENN">PENN</option>
+                                  <option value="HEPA">HEPA</option>
+                                  <option value="BOX">BOX</option>
+                                  <option value="SNYNF">SNYNF</option>
+                                  <option value="MARA">MARA</option>
+                                  <option value="STIM">STIM</option>
+                                  <option value="APYX">APYX</option>
+                                  <option value="CRSP">CRSP</option>
+                                  <option value="CJJD">CJJD</option>
                                 </select>
                               </div>
                             </div>
@@ -138,7 +162,7 @@
                             <div class ='col'>
                               <div class='form-group'>
                                 <div class="mt-5">
-                                  <a href="#" class="btn btn-default my-2" id='btn'>Try it now</a>
+                                  <button type = "submit" class="btn btn-default my-2" id='btn'>Try it now</button>
                                 </div>
                               </div>
                             </div>
