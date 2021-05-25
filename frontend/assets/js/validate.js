@@ -4,7 +4,7 @@ form.addEventListener("submit", (e)=> e.stopPropagation());
 btn.addEventListener("submit",(e)=>e.preventDefault())
 btn.addEventListener("click", isValid);
 
-let url ='http://localhost:3000/stock_input'
+let url ='http://localhost:10001/get/ticket'
 
 function isValid(e){
   //e.preventDefault()
@@ -44,25 +44,33 @@ function isValid(e){
                 alert('Something went wrong')
                 throw new Error(message);
               }         
+              return res.json()
             })
-            .then((res)=> data = res.json())
-            .then(storeData(data))
+            .then((res)=> {
+              console.log(res)
+              storeData(res)
+            })
+            
+            //.then(storeData(data))
             .then(()=> window.location.href='result.html')
             .catch((err)=>{
               console.log(err)
               alert("An error has occured",err); 
            })
+          
            }
     }
 
 
 function storeData(data) {
+  /*
   if (localStorage.length != 0){
     localStorage.clear()
   } else {
-    let ticker = `${data.ticket}`    
+  */
+    let ticker = `${data.ticker}`    
     let labels = data.timestamp
-    let actualPrice = data.actualprice
+    let actualPrice = data.actual_price
     let priceModel1 = data.price_model_1
     let priceModel2 = data.price_model_2
 
@@ -71,5 +79,5 @@ function storeData(data) {
     localStorage.setItem("priceModel1",JSON.stringify(priceModel1))
     localStorage.setItem("priceModel2",JSON.stringify(priceModel2))
     localStorage.setItem("ticker",ticker)
-  }
+  //}
 }

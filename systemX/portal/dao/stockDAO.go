@@ -3,6 +3,7 @@ package dao
 import (
 	"context"
 	"database/sql"
+	"fmt"
 	"portal/core"
 	"portal/model"
 )
@@ -84,7 +85,8 @@ func (s *stockDAO) GetTickerRealPrice(ctx context.Context, db *sql.DB, ticker, s
 		return nil, core.ErrDBObjNull
 	}
 
-	GetPriceByTickerQuery := GetRealPriceByTickerQueryComponent1 + ticker + GetPriceBytickerQueryComponent2
+	GetPriceByTickerQuery := GetRealPriceByTickerQueryComponent1 + ticker + GetRealPriceByTickerQueryComponent2
+	fmt.Println(GetPriceByTickerQuery)
 	rows, err := db.QueryContext(ctx, GetPriceByTickerQuery, start, end)
 	if err != nil {
 		return nil, err

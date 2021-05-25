@@ -72,6 +72,7 @@ func WebServer(termination model.TermChan, testMode bool) (fn model.DaemonFunc, 
 
 	// Set BodyLimit Middleware. It will panic if fail. For more example, please refer to https://echo.labstack.com/
 	e.Use(mw.BodyLimit(mainConf.WebServer.BodyLimit))
+	e.Use(mw.CORS())
 
 	// Secure middleware provides protection against cross-site scripting (XSS) attack, content type sniffing, clickjacking, insecure connection and other code injection attacks.
 	// For more example, please refer to https://echo.labstack.com/
@@ -124,7 +125,7 @@ func WebServer(termination model.TermChan, testMode bool) (fn model.DaemonFunc, 
 func initRouter(e *echo.Echo) {
 	e.POST("/get/all", stock.GetAllPredictedPrice)
 	e.POST("/get/ticket", stock.GetPredictedPriceByTicket)
-	e.POST("/get/tickets", stock.GetPredictedPriceByTickets)
+	//	e.POST("/get/tickets", stock.GetPredictedPriceByTickets)
 }
 
 func loadTLSConf(certFile, keyFile string) (*tls.Config, error) {

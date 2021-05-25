@@ -65,9 +65,10 @@ function addPrice(chart,arr1,arr2,arr3 ){
 
 
 function getData() {
-
   let labels = localStorage.getItem("labels")
   labels = JSON.parse(labels)
+  console.log(labels)
+  
   let actualPrice = localStorage.getItem("actualPrice")
   actualPrice = JSON.parse(actualPrice)
   let priceModel1 = localStorage.getItem("priceModel1")
@@ -79,6 +80,7 @@ function getData() {
   addLabels(myChart, labels)
   addPrice(myChart, priceModel1,priceModel2,actualPrice)
   document.getElementById("stockName").innerHTML = `Ticket: ${ticker} from ${labels[0]} to ${data.timestamp[labels.length -1]}`
+
 }
 
 getData()
