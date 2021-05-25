@@ -80,6 +80,8 @@ type Config struct {
 	WebServer *WebServer `json:"WebServer"`
 	// Database configuration
 	Database *Database `json:"Database"`
+
+	ModelName []string `json:"model_name"`
 }
 
 type Database struct {
@@ -213,6 +215,7 @@ func init() {
 			MaxOpenConn: viper.GetInt("DB_MAX_OPEN"),
 			IsWsrep:     false,
 		},
+		ModelName: viper.GetStringSlice("MODEL_NAME"),
 	}
 
 	serverBindingConf = &BindingConf{
