@@ -1,4 +1,4 @@
-let resultUrl = 'http://localhost:3000/stock_predicted'
+//let resultUrl = 'http://localhost:3000/stock_predicted'
 let chart = document.getElementById('chart-stock-1')
 
 
@@ -64,36 +64,55 @@ function addPrice(chart,arr1,arr2,arr3 ){
 }
 
 
-async function getData(){
-  const res = await fetch (resultUrl,
-      {
-         method: 'POST',
-        credentials: "omit",
-        headers: {
-           'Content-Type': 'application/json',
-           },
-          })
-          
-    if (!res.ok) {
-      const message = `An error has occured: ${res.status}`;
-      alert('Something went wrong')
-      throw new Error(message);
-    }
-  
-  const data = await res.json()
+function getData() {
 
-  let ticket = `${data.ticket}`    
-  let labels = data.timestamp
-  let actualPrice = data.actualprice
-  let priceModel1 = data.price_model_1
-  let priceModel2 = data.price_model_2
-  
+  let labels = localStorage.getItem("labels")
+  labels = JSON.parse(labels)
+  let actualPrice = localStorage.getItem("actualPrice")
+  actualPrice = JSON.parse(actualPrice)
+  let priceModel1 = localStorage.getItem("priceModel1")
+  priceModel1 = JSON.parse(priceModel1)
+  let priceModel2 = localStorage.getItem("priceModel2")
+  priceModel2 = JSON.parse(priceModel2)
+  let ticker = localStorage.getItem("ticker")
+
   addLabels(myChart, labels)
   addPrice(myChart, priceModel1,priceModel2,actualPrice)
-  document.getElementById("stockName").innerHTML = `Ticket: ${ticket} from ${data.timestamp[0]} to ${data.timestamp[data.timestamp.length -1]}`
+  document.getElementById("stockName").innerHTML = `Ticket: ${ticker} from ${labels[0]} to ${data.timestamp[labels.length -1]}`
 }
 
-getData().catch((err)=>{alert("An error has occured",err); console.log(err)})
+getData()
+
+// async function getData(){
+//   const res = await fetch (resultUrl,
+//       {
+//          method: 'POST',
+//         credentials: "omit",
+//         headers: {
+//            'Content-Type': 'application/json',
+//            },
+//           })
+          
+//     if (!res.ok) {
+//       const message = `An error has occured: ${res.status}`;
+//       alert('Something went wrong')
+//       throw new Error(message);
+//     }
+  
+//   const data = await res.json()
+
+//   let ticket = `${data.ticket}`    
+//   let labels = data.timestamp
+//   let actualPrice = data.actualprice
+//   let priceModel1 = data.price_model_1
+//   let priceModel2 = data.price_model_2
+  
+//   addLabels(myChart, labels)
+//   addPrice(myChart, priceModel1,priceModel2,actualPrice)
+//   document.getElementById("stockName").innerHTML = `Ticket: ${ticket} from ${data.timestamp[0]} to ${data.timestamp[data.timestamp.length -1]}`
+// }
+
+// getData().catch((err)=>{alert("An error has occured",err); console.log(err)})
 
 
 

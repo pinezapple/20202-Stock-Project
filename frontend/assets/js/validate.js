@@ -7,7 +7,7 @@ btn.addEventListener("click", isValid);
 let url ='http://localhost:3000/stock_input'
 
 function isValid(e){
-  e.preventDefault()
+  //e.preventDefault()
     let startDate = new Date(document.getElementById('startDate').value)
     let endDate = new Date (document.getElementById('endDate').value)
     let endDateMax = new Date()
@@ -21,6 +21,8 @@ function isValid(e){
             text: 'Date range must not be greater 5',
           })
     } else {
+      
+      e.preventDefault()
         let from = document.getElementById('startDate').value
         let to = document.getElementById('endDate').value
         let name = document.getElementById('stock').value
@@ -41,11 +43,11 @@ function isValid(e){
                 const message = `An error has occured: ${res.status}`;
                 alert('Something went wrong')
                 throw new Error(message);
-              } else {
-                window.location.href = 'result.html'
-                // console.log(res.status)
-              }
+              }         
             })
+            .then((res)=> data = res.json())
+            .then(storeData(data))
+            .then(()=> window.location.href='result.html')
             .catch((err)=>{
               console.log(err)
               alert("An error has occured",err); 
@@ -54,3 +56,20 @@ function isValid(e){
     }
 
 
+function storeData(data) {
+  if (localStorage.length != 0){
+    localStorage.clear()
+  } else {
+    let ticker = `${data.ticket}`    
+    let labels = data.timestamp
+    let actualPrice = data.actualprice
+    let priceModel1 = data.price_model_1
+    let priceModel2 = data.price_model_2
+
+    localStorage.setItem("labels",JSON.stringify(labels))
+    localStorage.setItem("actualPrice",JSON.stringify(actualPrice))
+    localStorage.setItem("priceModel1",JSON.stringify(priceModel1))
+    localStorage.setItem("priceModel2",JSON.stringify(priceModel2))
+    localStorage.setItem("ticker",ticker)
+  }
+}
