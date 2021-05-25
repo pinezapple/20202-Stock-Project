@@ -87,8 +87,8 @@ def main(argv):
     # starting arguments
     FILE_DIR = os.path.dirname(os.path.realpath(__file__))
     read_data_timeout = 10
-    start = datetime.datetime(2018, 11, 20)
-    end = datetime.datetime(2019, 11, 20)
+    start = datetime.datetime(2019, 11, 20)
+    end = datetime.datetime(2021, 11, 20)
     test_size = 30
     chunk = 5
     lstm_units = 10

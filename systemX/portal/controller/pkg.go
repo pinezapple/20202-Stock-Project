@@ -11,7 +11,6 @@ import (
 	"portal/model"
 
 	"github.com/labstack/echo"
-	"github.com/labstack/gommon/log"
 )
 
 // ResponseError response error struct
@@ -68,12 +67,7 @@ func ExecHandler(c echo.Context, expect interface{}, invoke func(c echo.Context,
 
 	statusCode, data, lg, logRespData, err := invoke(c, expect)
 	if err != nil {
-		if lg != nil {
-			if logRespData {
-				lg.Success = data
-			}
-			log.Info(lg)
-		}
+		core.LogErr(err)
 		return c.JSON(http.StatusOK, &Response{
 			Error: ResponseError{
 				Code:    statusCode,
@@ -90,10 +84,13 @@ func ExecHandler(c echo.Context, expect interface{}, invoke func(c echo.Context,
 	}
 
 	fmt.Println(data)
-	return c.JSON(http.StatusOK, &Response{
-		Data: data,
-		Error: ResponseError{
-			Code: http.StatusOK,
-		},
-	})
+	/*
+		return c.JSON(http.StatusOK, &Response{
+			Data: data,
+			Error: ResponseError{
+				Code: http.StatusOK,
+			},
+		})
+	*/
+	return c.JSON(http.StatusOK, data)
 }

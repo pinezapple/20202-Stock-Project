@@ -120,7 +120,7 @@ func writeToDB(shardID uint32, stockData quote.Quote, stockName string) error {
 
 	st := "DROP TABLE IF EXISTS `" + stockName + "`"
 
-	st2 := "CREATE TABLE " + stockName + "(`id` INTEGER PRIMARY KEY auto_increment,`timestamp` DATETIME NOT NULL,`open` DECIMAL(12, 6) NOT NULL,`high` DECIMAL(12, 6) NOT NULL,`low` DECIMAL(12, 6) NOT NULL,`close` DECIMAL(12, 6) NOT NULL,`volume` DECIMAL(18,10) NOT NULL);"
+	st2 := "CREATE TABLE " + stockName + "(`id` INTEGER PRIMARY KEY auto_increment,`timestamp` DATETIME NOT NULL,`open` DECIMAL(12, 6) NOT NULL,`high` DECIMAL(12, 6) NOT NULL,`low` DECIMAL(12, 6) NOT NULL,`close` DECIMAL(12, 6) NOT NULL,`volume` DECIMAL(24,12) NOT NULL);"
 
 	st3 := "INSERT INTO " + stockName + " (timestamp, open, high, low, close, volume) values (?,?,?,?,?,?);"
 
@@ -165,7 +165,7 @@ func writeToDB(shardID uint32, stockData quote.Quote, stockName string) error {
 
 	}
 
-	st4 := "insert into ticker(name,status) values (?,?)"
+	st4 := "insert into ticket(name,status) values (?,?)"
 	stmtTicker2, err := tx.Prepare(st4)
 	if err != nil {
 		dbShardObj[shardID].Unlock()

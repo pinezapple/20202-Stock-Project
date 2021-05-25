@@ -143,6 +143,14 @@ func NewSecureCookieMW(config SecureCookieConfig) echo.MiddlewareFunc {
 }
 
 //------------------------------------------------- HTTP Request -----------------------------------------------
+type GetPriceByTickerResp struct {
+	Ticker      string    `json:"ticker"`
+	Timestamp   []string  `json:"timestamp"`
+	ActualPrice []float32 `json:"actual_price"`
+	PriceModel1 []float32 `json:"price_model_1"`
+	PriceModel2 []float32 `json:"price_model_2"`
+}
+
 type AllRequest struct {
 	From string `json:"from"`
 	To   string `json:"to"`
@@ -163,5 +171,10 @@ type ManyTicketsRequest struct {
 type StockPredicted struct {
 	Ticker    string  `json:"ticker" db:"ticker"`
 	Price     float32 `json:"price" db:"price"`
+	Timestamp string  `json:"timestamp" db:"timestamp"`
+}
+
+type RealPrice struct {
+	Close     float32 `json:"close" db:"close"`
 	Timestamp string  `json:"timestamp" db:"timestamp"`
 }

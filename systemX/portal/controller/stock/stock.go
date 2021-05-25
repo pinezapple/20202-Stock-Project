@@ -15,6 +15,8 @@ func GetPredictedPriceByTicket(c echo.Context) error {
 	return controller.ExecHandler(c, &model.TicketRequest{}, getPredictedPriceByTicket)
 }
 
+/*
 func GetPredictedPriceByTickets(c echo.Context) error {
 	return controller.ExecHandler(c, &model.ManyTicketsRequest{}, getPredictedPriceByTickets)
 }
+*/

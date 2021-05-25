@@ -1,1 +1,1 @@
-create table ticker(`name` varchar(20), status varchar(2));
+create table ticket(`name` varchar(20), status varchar(2));
