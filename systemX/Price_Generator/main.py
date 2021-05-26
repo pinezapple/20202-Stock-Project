@@ -75,8 +75,8 @@ def main():
         mse, mae = model.evaluate(data["X_test"], data["y_test"])
         print("mse = {mse} ----- mae = {mae}")
         # calculate the mean absolute error (inverse scaling)
-        mean_absolute_error = data["column_scaler"]["close"].inverse_transform(mae.reshape(1, -1))[0][0]
-        print("Mean Absolute Error:", mean_absolute_error)
+        #mean_absolute_error = data["column_scaler"]["close"].inverse_transform(mae.reshape(1, -1))[0][0]
+        print("Mean Absolute Error:", mae)
 
         # load the model
         # model_path = os.path.join("results", model_name) + ".h5"
