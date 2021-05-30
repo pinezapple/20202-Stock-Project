@@ -12,11 +12,25 @@ def connect():
             host=config.getEnvValue("HOST"),
             port=config.getEnvValue("PORT"),
             database=config.getEnvValue("DATABASE"),
-            user=config.getEnvValue("USER"),
+            user=config.getEnvValue("USERDB"),
             password=config.getEnvValue("PASSWORD"),
         )
+        print(config.getEnvValue("HOST"))
+        print(config.getEnvValue("PORT"))
+        print(config.getEnvValue("DATABASE"))
+        print(config.getEnvValue("USERDB"))
+        print(config.getEnvValue("PASSWORD"))
+
+        print(connection)
         return connection
     except Error as error:
+        print(config.getEnvValue("HOST"))
+        print(config.getEnvValue("PORT"))
+        print(config.getEnvValue("DATABASE"))
+        print(config.getEnvValue("USERDB"))
+        print(config.getEnvValue("PASSWORD"))
+
+        
         print("Failed to create connection to db : {error}")
         return
 
