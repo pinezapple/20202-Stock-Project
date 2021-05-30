@@ -36,7 +36,7 @@ _ [**Các tài liệu khác**](https://drive.google.com/open?id=1bVA8XYJ_cDb9mNI
 
 #### [1. Data Crawler & Portal](https://github.com/pinezapple/20202-Stock-Project/tree/main/systemX)
 
-#### [2. Price Predictor](https://github.com/ThanhPP/HUST_20192_Project2/tree/master/systemX/Price_Generator)
+#### [2. Price Predictor](https://github.com/pinezapple/20202-Stock-Project/tree/main/systemX/Price_Generator)
 
 
 ### Benchmark hệ thống : 
