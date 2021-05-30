@@ -18,7 +18,7 @@ _ **Sinh viên thực hiện** :
 
 - [Nguyễn Thanh Tùng](https://github.com/pinezapple)
 
-_ [**Các tài liệu khác**](https://drive.google.com/open?id=1bVA8XYJ_cDb9mNIbi9VGlNTvnni_0VFJ)
+_ [**Các tài liệu khác**](https://drive.google.com/drive/u/0/folders/1HEeWtAvx3QEX8-NdKroqLt776YLoR2bw)
 
 ## Tổng quan hệ thống:
 
