@@ -48,7 +48,7 @@ _ [**Các tài liệu khác**](https://drive.google.com/open?id=1bVA8XYJ_cDb9mNI
 
 + Cấu hình máy : Dell M4800 - Intel I7 - 4910MQ
 
-+ Đối với [mô hình LSTM 2 lớp](https://github.com/ThanhPP/HUST_20192_Project2/tree/master/systemX/Price_Generator#2-m%C3%B4-h%C3%ACnh-lstm-2-l%E1%BB%9Bp--1)
++ Đối với [mô hình LSTM 2 lớp](https://github.com/pinezapple/20202-Stock-Project/tree/main/systemX/Price_Generator#2-m%C3%B4-h%C3%ACnh-lstm-2-l%E1%BB%9Bp-)
     - Thời gian trung bình hết khoảng 1 phút 20 giây cho 1 ticker.
     - Settings :
       - Thời gian lấy dữ liệu : 01/01/2010 - 01/01/2020
