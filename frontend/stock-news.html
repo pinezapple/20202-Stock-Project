@@ -20,7 +20,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
    <meta name="author" content="Creative Tim">
-   <title>Stock Details</title>
+   <title>Stock News</title>
    <!-- Fonts -->
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
    <!-- Icons -->
@@ -59,13 +59,27 @@
              </button>
            </form> -->
            <!-- Navbar links -->
-           <ul class="navbar-nav align-items-center ml-md-auto">
-             <!-- <li class="nav-item d-sm-none">
-               <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
-                 <i class="ni ni-zoom-split-in"></i>
-               </a>
-             </li> -->
-           </ul>
+           <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item d-sm-none">
+              <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+                <i class="ni ni-zoom-split-in"></i>
+              </a>
+            </li> -->
+            <li class="nav-item">
+             <a href="index.html" class="nav-link">
+               <span class="nav-link-inner--text">Stock Prediction</span>
+             </a>
+            <li class="nav-item">
+             <a href="stock-details.html" class="nav-link">
+               <span class="nav-link-inner--text">Stock Detail</span>
+             </a>
+           </li>
+           <li class="nav-item">
+             <a href="http://localhost:5500/frontend/stock-news.html" class="nav-link">
+               <span class="nav-link-inner--text">Stock News</span>
+             </a>
+           </li>
+         </ul>
            <ul class="navbar-nav align-items-lg-center ml-lg-auto">
 
             <li class="nav-item d-none d-lg-block ml-lg-4">
@@ -90,7 +104,8 @@
                <h6 class="h2 text-white d-inline-block mb-0"></h6>
                <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                  <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                   <li class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i></a></li>
+                   <li class="breadcrumb-item"><a href="stock-details.html">Stock Detail</a></li>
                    <li class="breadcrumb-item"><a href="#">Stock News</a></li>
                  </ol>
                </nav>
@@ -163,6 +178,115 @@
        </footer>
      </div>
    </div>
+<!-- Modal -->
+<div class="modal fade" id="select-stock-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select Ticker</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label class="form-control-label">Ticker</label>
+              <select class="form-control" data-toggle="select" id="ticker-1">
+                <option value="GOOG">GOOG</option>
+                <option value="FSLY">FSLY</option>
+                <option value="TBIO">TBIO</option>
+                <option value="INO">INO</option>
+                <option value="AAPL">AAPL</option>
+                <option value="PLUG">PLUG</option>
+                <option value="MSFT">MSFT</option>
+                <option value="BRN">BRN</option>
+                <option value="FFHL">FFHL</option>
+                <option value="SPR">SPR</option>
+                <option value="WKHS">WKHS</option>
+                <option value="SNY">SNY</option>
+                <option value="KIRK">KIRK</option>
+                <option value="SONO">SONO</option>
+                <option value="FRSX">FRSX</option>
+                <option value="PTN">PTN</option>
+                <option value="DLOC">DLOC</option>
+                <option value="NNDM">NNDM</option>
+                <option value="PENN">PENN</option>
+                <option value="HEPA">HEPA</option>
+                <option value="SNYNF">SNYNF</option>
+                <option value="MARA">MARA</option>
+                <option value="STIM">STIM</option>
+                <option value="APYX">APYX</option>
+                <option value="CRSP">CRSP</option>
+                <option value="CJJD">CJJD</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id='get-stock-details'>Go</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="select-stock-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select Ticker</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label class="form-control-label">Ticker</label>
+              <select class="form-control" data-toggle="select" id="ticker-2">
+                <option value="GOOG">GOOG</option>
+                <option value="FSLY">FSLY</option>
+                <option value="TBIO">TBIO</option>
+                <option value="INO">INO</option>
+                <option value="AAPL">AAPL</option>
+                <option value="PLUG">PLUG</option>
+                <option value="MSFT">MSFT</option>
+                <option value="BRN">BRN</option>
+                <option value="FFHL">FFHL</option>
+                <option value="SPR">SPR</option>
+                <option value="WKHS">WKHS</option>
+                <option value="SNY">SNY</option>
+                <option value="KIRK">KIRK</option>
+                <option value="SONO">SONO</option>
+                <option value="FRSX">FRSX</option>
+                <option value="PTN">PTN</option>
+                <option value="DLOC">DLOC</option>
+                <option value="NNDM">NNDM</option>
+                <option value="PENN">PENN</option>
+                <option value="HEPA">HEPA</option>
+                <option value="SNYNF">SNYNF</option>
+                <option value="MARA">MARA</option>
+                <option value="STIM">STIM</option>
+                <option value="APYX">APYX</option>
+                <option value="CRSP">CRSP</option>
+                <option value="CJJD">CJJD</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id='get-stock-news'>Go</button>
+      </div>
+    </div>
+  </div>
+</div>
+
    <!-- Argon Scripts -->
    <!-- Core -->
    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -183,6 +307,7 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 
    <script src="./assets/js/stockNews.js"></script>
+   <script src="./assets/js/getStock.js"></script>
 
    <!-- Argon JS -->
    <script src="./assets/js/argon.js?v=1.1.0"></script>

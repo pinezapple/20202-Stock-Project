@@ -1,5 +1,5 @@
-//let ticker = localStorage.getItem("ticker")
-let ticker = "AAPL"
+let ticker = localStorage.getItem("ticker")
+//let ticker = "AAPL"
 let ctx = document.getElementById('stock-chart').getContext('2d');
 let time = Date.now()
 
@@ -9,38 +9,42 @@ const rest = {
     method: 'GET',
     url: 'https://yahoo-finance-low-latency.p.rapidapi.com/v11/finance/quoteSummary/'+ticker,
     headers: {
-      'x-rapidapi-key': '3f4a154586msha65d4b4feba76bdp1dc0b0jsn044479d9e35a',
+      'x-rapidapi-key': '4f545a084fmsh68cbc4b65e83956p153360jsnc888a2054a67',
       'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
     }
   };
 
   const summary = {params: {modules: 'summaryDetail'}, ...rest}
   const price = {params: {modules: 'price'}, ...rest}
-  const chart ={
-      method: 'GET',
-      url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart',
-      params: {
-        interval: "1d",
-	    range: "3m",
-        symbol: ticker,
-        range: '1y',
-        region: 'US',
-        period1: time.toString()
-    },
-  headers: {
-    'x-rapidapi-key': '4f545a084fmsh68cbc4b65e83956p153360jsnc888a2054a67',
-    'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
-  }}
+  const chart ={...rest,
+    params: {interval: '1d', range: '1y'},
+    url: 'https://yahoo-finance-low-latency.p.rapidapi.com/v8/finance/chart/'+ticker
+    }
+//   const chart ={
+//       method: 'GET',
+//       url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart',
+//       params: {
+//         interval: "1d",
+// 	    range: "3m",
+//         symbol: ticker,
+//         range: '1y',
+//         region: 'US',
+//         period1: time.toString()
+//     },
+//   headers: {
+//     'x-rapidapi-key': '4f545a084fmsh68cbc4b65e83956p153360jsnc888a2054a67',
+//     'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
+//   }}
 
 async function getStockData() {
     try{
-        //const prom1 = axios.request(summary)
-        //const prom2 = axios.request(price)
+        const prom1 = axios.request(summary)
+        const prom2 = axios.request(price)
         const prom3 = axios.request(chart)
-        const response = await prom3 //Promise.all([prom1,prom2,prom3])
-        //console.log(response)
-       // getStockPrice(response)
-        //getStockSummary(response)
+        const response = await Promise.all([prom1,prom2,prom3])
+        console.log(response)
+        getStockPrice(response)
+        getStockSummary(response)
         getChartData(response)
     } catch(e){
         console.error(e)
@@ -111,12 +115,12 @@ function addCells(arr,tableId) {
 
 function getChartData(response) {
     let timestamp=[]
-    let allPrice = response.data.chart.result[0].indicators.quote[0].close
-    let allVolume = response.data.chart.result[0].indicators.quote[0].volume
-    let allOpen = response.data.chart.result[0].indicators.quote[0].open
-    let allHigh = response.data.chart.result[0].indicators.quote[0].high
-    let allLow = response.data.chart.result[0].indicators.quote[0].low
-    let allTimestamp = response.data.chart.result[0].timestamp
+    let allPrice = response[2].data.chart.result[0].indicators.quote[0].close
+    let allVolume = response[2].data.chart.result[0].indicators.quote[0].volume
+    let allOpen = response[2].data.chart.result[0].indicators.quote[0].open
+    let allHigh = response[2].data.chart.result[0].indicators.quote[0].high
+    let allLow = response[2].data.chart.result[0].indicators.quote[0].low
+    let allTimestamp = response[2].data.chart.result[0].timestamp
     for (time of allTimestamp){
         timestamp.push(moment.unix(time).format("L"))
     }

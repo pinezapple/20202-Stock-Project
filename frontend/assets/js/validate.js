@@ -62,12 +62,11 @@ function isValid(e){
     }
 
 
+
 function storeData(data) {
-  /*
+  
   if (localStorage.length != 0){
     localStorage.clear()
-  } else {
-  */
     let ticker = `${data.ticker}`    
     let labels = data.timestamp
     let actualPrice = data.actual_price
@@ -79,5 +78,19 @@ function storeData(data) {
     localStorage.setItem("priceModel1",JSON.stringify(priceModel1))
     localStorage.setItem("priceModel2",JSON.stringify(priceModel2))
     localStorage.setItem("ticker",ticker)
-  //}
+    
+  } else {
+  
+    let ticker = `${data.ticker}`    
+    let labels = data.timestamp
+    let actualPrice = data.actual_price
+    let priceModel1 = data.price_model_1
+    let priceModel2 = data.price_model_2
+
+    localStorage.setItem("labels",JSON.stringify(labels))
+    localStorage.setItem("actualPrice",JSON.stringify(actualPrice))
+    localStorage.setItem("priceModel1",JSON.stringify(priceModel1))
+    localStorage.setItem("priceModel2",JSON.stringify(priceModel2))
+    localStorage.setItem("ticker",ticker)
+  }
 }

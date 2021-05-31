@@ -1,8 +1,8 @@
-//let ticker = localStorage.getItem("ticker")
+let ticker = localStorage.getItem("ticker")
 let previousPage = document.getElementById("previous-page")
 let nextPage = document.getElementById("next-page")
 let currentPage = 1
-let ticker = "AAPL"
+//let ticker = "AAPL"
 let options ={
     method: 'GET',
     url: `https://newsapi.org/v2/everything`,
@@ -28,8 +28,6 @@ async function getStockNews(news) {
         console.log(e)
     }
 }
-
-getStockNews()
 
 function getNewsCard(articles){
 const row = document.getElementById("row-1")
@@ -111,3 +109,4 @@ nextPage.addEventListener("click",()=>{
     }
 })
 
+getStockNews()

@@ -61,8 +61,20 @@
               </div>
             </div>
           </div>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link" data-toggle="modal" data-target="#select-stock-1" >
+                <span class="nav-link-inner--text">Stock Detail</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" data-toggle="modal" data-target="#select-stock-2" >
+                <span class="nav-link-inner--text">Stock News</span>
+              </a>
+            </li>
+          </ul>
+          <hr class="d-lg-none" />
           <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-
             <li class="nav-item d-none d-lg-block ml-lg-4">
               <a href="https://github.com/pinezapple/20202-Stock-Project" target="_blank" class="btn btn-neutral btn-icon">
                 <span class="btn-inner--icon">
@@ -127,26 +139,21 @@
                                   <option value="TBIO">TBIO</option>
                                   <option value="INO">INO</option>
                                   <option value="AAPL">AAPL</option>
-                                  <option value="CBL">CBL</option>
                                   <option value="PLUG">PLUG</option>
                                   <option value="MSFT">MSFT</option>
                                   <option value="BRN">BRN</option>
-                                  <option value="LK">LK</option>
                                   <option value="FFHL">FFHL</option>
-                                  <option value="LLEX">LLEX</option>
                                   <option value="SPR">SPR</option>
                                   <option value="WKHS">WKHS</option>
                                   <option value="SNY">SNY</option>
                                   <option value="KIRK">KIRK</option>
                                   <option value="SONO">SONO</option>
-                                  <option value="SNSS">SNSS</option>
                                   <option value="FRSX">FRSX</option>
                                   <option value="PTN">PTN</option>
                                   <option value="DLOC">DLOC</option>
                                   <option value="NNDM">NNDM</option>
                                   <option value="PENN">PENN</option>
                                   <option value="HEPA">HEPA</option>
-                                  <option value="BOX">BOX</option>
                                   <option value="SNYNF">SNYNF</option>
                                   <option value="MARA">MARA</option>
                                   <option value="STIM">STIM</option>
@@ -224,6 +231,114 @@
         </div>
       </div>
     </footer>
+<!-- Modal -->
+<div class="modal fade" id="select-stock-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select Ticker</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label class="form-control-label">Ticker</label>
+              <select class="form-control" data-toggle="select" id="ticker-1">
+                <option value="GOOG">GOOG</option>
+                <option value="FSLY">FSLY</option>
+                <option value="TBIO">TBIO</option>
+                <option value="INO">INO</option>
+                <option value="AAPL">AAPL</option>
+                <option value="PLUG">PLUG</option>
+                <option value="MSFT">MSFT</option>
+                <option value="BRN">BRN</option>
+                <option value="FFHL">FFHL</option>
+                <option value="SPR">SPR</option>
+                <option value="WKHS">WKHS</option>
+                <option value="SNY">SNY</option>
+                <option value="KIRK">KIRK</option>
+                <option value="SONO">SONO</option>
+                <option value="FRSX">FRSX</option>
+                <option value="PTN">PTN</option>
+                <option value="DLOC">DLOC</option>
+                <option value="NNDM">NNDM</option>
+                <option value="PENN">PENN</option>
+                <option value="HEPA">HEPA</option>
+                <option value="SNYNF">SNYNF</option>
+                <option value="MARA">MARA</option>
+                <option value="STIM">STIM</option>
+                <option value="APYX">APYX</option>
+                <option value="CRSP">CRSP</option>
+                <option value="CJJD">CJJD</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id='get-stock-details'>Go</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="select-stock-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select Ticker</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label class="form-control-label">Ticker</label>
+              <select class="form-control" data-toggle="select" id="ticker-2">
+                <option value="GOOG">GOOG</option>
+                <option value="FSLY">FSLY</option>
+                <option value="TBIO">TBIO</option>
+                <option value="INO">INO</option>
+                <option value="AAPL">AAPL</option>
+                <option value="PLUG">PLUG</option>
+                <option value="MSFT">MSFT</option>
+                <option value="BRN">BRN</option>
+                <option value="FFHL">FFHL</option>
+                <option value="SPR">SPR</option>
+                <option value="WKHS">WKHS</option>
+                <option value="SNY">SNY</option>
+                <option value="KIRK">KIRK</option>
+                <option value="SONO">SONO</option>
+                <option value="FRSX">FRSX</option>
+                <option value="PTN">PTN</option>
+                <option value="DLOC">DLOC</option>
+                <option value="NNDM">NNDM</option>
+                <option value="PENN">PENN</option>
+                <option value="HEPA">HEPA</option>
+                <option value="SNYNF">SNYNF</option>
+                <option value="MARA">MARA</option>
+                <option value="STIM">STIM</option>
+                <option value="APYX">APYX</option>
+                <option value="CRSP">CRSP</option>
+                <option value="CJJD">CJJD</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id='get-stock-news'>Go</button>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- Argon Scripts -->
     <!-- Core -->
     <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -244,6 +359,7 @@
     <!-- Argon JS -->
     <script src="./assets/js/argon.js?v=1.1.0"></script>
     <script src="./assets/js/validate.js"></script>
+    <script src="./assets/js/getStock.js"></script>
     <!-- Demo JS - remove this in your project -->
     <script src="./assets/js/demo.min.js"></script>
   </body>
