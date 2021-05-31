@@ -4,7 +4,7 @@ form.addEventListener("submit", (e)=> e.stopPropagation());
 btn.addEventListener("submit",(e)=>e.preventDefault())
 btn.addEventListener("click", isValid);
 
-let url ='http://localhost:10001/get/ticket'
+let url ='http://25.61.234.199:10001/get/ticket'
 
 function isValid(e){
   //e.preventDefault()
