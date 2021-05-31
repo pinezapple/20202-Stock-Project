@@ -3,7 +3,7 @@ import pandas as pd
 from mysql.connector import Error
 import config
 import datetime
-
+from datetime import timedelta  
 
 def connect():
     # print(f"Connecting to {config.getEnvValue('HOST')}")
@@ -15,13 +15,6 @@ def connect():
             user=config.getEnvValue("USERDB"),
             password=config.getEnvValue("PASSWORD"),
         )
-        print(config.getEnvValue("HOST"))
-        print(config.getEnvValue("PORT"))
-        print(config.getEnvValue("DATABASE"))
-        print(config.getEnvValue("USERDB"))
-        print(config.getEnvValue("PASSWORD"))
-
-        print(connection)
         return connection
     except Error as error:
         print(config.getEnvValue("HOST"))
@@ -83,10 +76,10 @@ def check_ticker_db(ticker, connection):
         return row[1]
 
 
-def push_predicted_to_db(input_ticker, input_price, input_mse, input_mae, input_accuracy):
+def push_predicted_to_db(input_ticker, input_price, input_mse, input_mae, input_accuracy, lookup_step):
     ticker = str(input_ticker)
     price = str("%12.6f" % input_price)
-    timestamp = str(datetime.datetime.now())
+    timestamp = str(datetime.datetime.now() + timedelta(days=lookup_step))
     mse = str("%.3f" % input_mse)
     mae = str("%.3f" % input_mae)
     accuracy = str("%.3f" % input_accuracy)
@@ -106,9 +99,17 @@ def push_predicted_to_db(input_ticker, input_price, input_mse, input_mae, input_
         connection.commit()
     except Error:
     """
+
     connection = connect()
     cursor = connection.cursor()
-    sql = "INSERT INTO `predicted` (ticker, price, timestamp,mse, mae, accuracy) VALUES (%s, %s, %s,%s, %s, %s);"
+
+    table_name = "`predicted_"+ config.getEnvValue("ModelName") +"`"
+    create_table_query = "CREATE TABLE IF NOT EXISTS "+ table_name +"(`ticker` varchar(20) not null, `price` decimal(12,6), `timestamp` datetime, `mse` text not null, `mae` text not null, `accuracy` text not null);"
+
+    #Create table
+    cursor.execute(create_table_query)
+
+    sql = "INSERT INTO "+ table_name +" (ticker, price, timestamp,mse, mae, accuracy) VALUES (%s, %s, %s,%s, %s, %s);"
     val = (str(ticker), str(price), str(timestamp), str(mse), str(mae), str(accuracy))
     cursor.execute(sql, val)
     connection.commit()

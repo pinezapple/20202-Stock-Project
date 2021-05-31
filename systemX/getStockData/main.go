@@ -9,7 +9,7 @@ import (
 	"database/sql"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/markcheno/go-quote"
+	"github.com/pinezapple/go-quote"
 	"github.com/spf13/viper"
 )
 
@@ -43,7 +43,7 @@ var dbShardObj []*DBShardObj
 func init() {
 	viper.SetConfigName("config")
 	viper.SetConfigType("toml")
-	viper.AddConfigPath(".")
+	viper.AddConfigPath("config")
 
 	if err := viper.ReadInConfig(); err != nil {
 		panic(err)
@@ -165,7 +165,7 @@ func writeToDB(shardID uint32, stockData quote.Quote, stockName string) error {
 
 	}
 
-	st4 := "insert into ticket(name,status) values (?,?)"
+	st4 := "insert into ticker(name,status) values (?,?)"
 	stmtTicker2, err := tx.Prepare(st4)
 	if err != nil {
 		dbShardObj[shardID].Unlock()
