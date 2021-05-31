@@ -26,7 +26,7 @@ class TrainingConfigObject:
 
 
 def setEnvPath():
-    env_path = Path('.') / 'config.env'
+    env_path = Path('config') / 'config.env'
     load_dotenv(dotenv_path=env_path)
 
 

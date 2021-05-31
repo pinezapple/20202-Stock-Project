@@ -175,7 +175,7 @@ func init() {
 	// if os.Getenv("APP_ENV") == "DEV" {
 	viper.SetConfigName("config")
 	viper.SetConfigType("toml")
-	viper.AddConfigPath(".")
+	viper.AddConfigPath("config")
 	if err := viper.ReadInConfig(); err != nil {
 		panic(err)
 	}

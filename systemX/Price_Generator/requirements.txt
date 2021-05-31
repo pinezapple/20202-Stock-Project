@@ -1,0 +1,9 @@
+matplotlib
+numpy
+sklearn
+tensorflow
+pandas
+pandas_datareader
+mysql-connector-python
+yfinance
+python-dotenv

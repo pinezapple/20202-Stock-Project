@@ -17,8 +17,10 @@
 _ **Sinh viên thực hiện** : 
 
 - [Nguyễn Thanh Tùng](https://github.com/pinezapple)
+- [Phạm Thanh Hằng](https://github.com/phamthanhhang208)
+- [Bàn Phúc Mạnh](https://github.com/banmanh482)
 
-_ [**Các tài liệu khác**](https://drive.google.com/open?id=1bVA8XYJ_cDb9mNIbi9VGlNTvnni_0VFJ)
+_ [**Các tài liệu khác**](https://drive.google.com/drive/u/0/folders/1HEeWtAvx3QEX8-NdKroqLt776YLoR2bw)
 
 ## Tổng quan hệ thống:
 
@@ -34,9 +36,9 @@ _ [**Các tài liệu khác**](https://drive.google.com/open?id=1bVA8XYJ_cDb9mNI
 
 ### Chi tiết về các thành phần :
 
-#### [1. Data Crawler & Portal](https://github.com/ThanhPP/HUST_20192_Project2/tree/master/systemX)
+#### [1. Data Crawler & Portal](https://github.com/pinezapple/20202-Stock-Project/tree/main/systemX)
 
-#### [2. Price Predictor](https://github.com/ThanhPP/HUST_20192_Project2/tree/master/systemX/Price_Generator)
+#### [2. Price Predictor](https://github.com/pinezapple/20202-Stock-Project/tree/main/systemX/Price_Generator)
 
 
 ### Benchmark hệ thống : 
@@ -48,7 +50,7 @@ _ [**Các tài liệu khác**](https://drive.google.com/open?id=1bVA8XYJ_cDb9mNI
 
 + Cấu hình máy : Dell M4800 - Intel I7 - 4910MQ
 
-+ Đối với [mô hình LSTM 2 lớp](https://github.com/ThanhPP/HUST_20192_Project2/tree/master/systemX/Price_Generator#2-m%C3%B4-h%C3%ACnh-lstm-2-l%E1%BB%9Bp--1)
++ Đối với [mô hình LSTM 2 lớp](https://github.com/pinezapple/20202-Stock-Project/tree/main/systemX/Price_Generator#2-m%C3%B4-h%C3%ACnh-lstm-2-l%E1%BB%9Bp-)
     - Thời gian trung bình hết khoảng 1 phút 20 giây cho 1 ticker.
     - Settings :
       - Thời gian lấy dữ liệu : 01/01/2010 - 01/01/2020
