@@ -21,5 +21,5 @@ btnGetNews.addEventListener('click',()=>{
         localStorage.setItem("ticker",ticker2)
         //window.location.href='stock-news.html'
     }
-    window.location.href='http://localhost:10001/frontend/stock-news.html'
+    window.location.href='http://localhost:5500/frontend/stock-news.html'
 })
