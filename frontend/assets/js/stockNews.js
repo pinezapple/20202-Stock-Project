@@ -25,6 +25,7 @@ async function getStockNews(news) {
         getNewsCard(responses.data.articles)
     }
     catch(e){
+        alert(`Something went wrong, ${e}`)
         console.log(e)
     }
 }

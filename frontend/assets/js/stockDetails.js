@@ -42,12 +42,14 @@ async function getStockData() {
         const prom2 = axios.request(price)
         const prom3 = axios.request(chart)
         const response = await Promise.all([prom1,prom2,prom3])
-        console.log(response)
+        //console.log(response)
         getStockPrice(response)
         getStockSummary(response)
         getChartData(response)
+
     } catch(e){
-        console.error(e)
+        alert(`Something went wrong, ${e}`)
+        console.log(e)
     }
 }
 
@@ -91,25 +93,35 @@ function getStockSummary(response){
         bidSize,
         askSize
     } = response[0].data.quoteSummary.result[0].summaryDetail
-    let arr1 =[]
-    let arr2 =[]
-    arr1.push(previousClose.fmt,open.fmt,marketCap.fmt,beta.fmt,trailingPE.fmt)
-    arr2.push(dividendRate.fmt,dividendYield.fmt,exDividendDate.fmt,forwardPE.fmt,fiveYearAvgDividendYield.fmt)
-    addCells(arr1,"summary-1")
-    addCells(arr2,"summary-2")
 
     document.getElementById("avg-volume").innerText = `${averageVolume.fmt}`
     document.getElementById("bid").innerText = `${bid.fmt}`
     document.getElementById("bid-size").innerText = `${bidSize.fmt}`
     document.getElementById("ask").innerText = `${ask.fmt}`
     document.getElementById("ask-size").innerText = `${askSize.fmt}`
+
+
+    let arr1 =[]
+    let arr2 =[]
+    arr1.push(previousClose,open,marketCap,beta,trailingPE)
+    arr2.push(dividendRate,dividendYield,exDividendDate,forwardPE,fiveYearAvgDividendYield)
+    addCells(arr1,"summary-1")
+    addCells(arr2,"summary-2")
+
+    
 }
 
 function addCells(arr,tableId) {
     table = document.getElementById(tableId)
     for (let i = 0; i < arr.length; i++){
+        if(typeof arr[i] === "undefined"){
+            arr[i] = new Object ()
+            arr[i]['fmt'] = 'N/A'
+          }else if(Object.keys(arr[i]).length === 0){
+            arr[i]['fmt'] = 'N/A'
+          }
         let cell = table.rows[i].cells[1]
-        cell.innerText = arr[i]
+        cell.innerText = arr[i]['fmt']
     }
 }
 
@@ -239,5 +251,5 @@ let stockChart = new Chart(ctx, {
 
 
 
-//getStockData()
+getStockData()
 
