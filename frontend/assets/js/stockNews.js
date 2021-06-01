@@ -3,21 +3,22 @@ let previousPage = document.getElementById("previous-page")
 let nextPage = document.getElementById("next-page")
 let currentPage = 1
 //let ticker = "AAPL"
-let options ={
+let news ={
     method: 'GET',
     url: `https://newsapi.org/v2/everything`,
-
-headers: {
-  'X-Api-Key': '0f3baa968294406481578725d354a302',
-}}
-
-async function getStockNews(news) {
-    news ={...options,params: {
+    params: {
         "qInTitle" : ticker,
         "language" : "en",
         "page" : currentPage,
         "pageSize" : 12 
-  }}
+  },
+   headers: {
+  'X-Api-Key': '0f3baa968294406481578725d354a302',
+}}
+
+async function getStockNews() {
+    news["page"] = currentPage
+    //console.log(news)
     try{
         let prom = axios.request(news)
         let responses = await prom
@@ -87,27 +88,26 @@ function removeNews() {
     }
 }
 
-function getMoreNews(){
+async function getMoreNews(){
+    news['page'] = currentPage
     removeNews()
-    news ={...options,params: {
-        "qInTitle" : ticker,
-        "language" : "en",
-        "page" : currentPage,
-        "pageSize" : 12 
-  }}
-    getStockNews(news)
+    await getStockNews()
+}
+
+function check() {
+    previousPage.disabled = currentPage == 1 ? true : false;
 }
 
 nextPage.addEventListener("click",()=>{
     currentPage = currentPage + 1
     getMoreNews()
-    previousPage.removeAttribute('disabled')
-    if(previousPage.disabled == false){
-        previousPage.addEventListener('click',()=>{
-            currentPage = currentPage - 1
-            getMoreNews()
-        })
-    }
+    check()
+})
+
+previousPage.addEventListener('click',()=>{
+    currentPage = currentPage - 1
+    check()
+    getMoreNews()
 })
 
 getStockNews()
