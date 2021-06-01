@@ -3,8 +3,8 @@
 ## MỤC LỤC :
 
 ### [0. Các chương trình tạo model thử nghiệm](#0-các-chương-trình-tạo-model-thử-nghiệm-)
-- [1. TEST 1](https://github.com/ThanhPP/HUST_20192_Project2/tree/master/systemX/Price_Generator/_0_Model_test_file/Test124032020)
-- [2. TEST 2](https://github.com/ThanhPP/HUST_20192_Project2/tree/master/systemX/Price_Generator/_0_Model_test_file/Test042020)
+- [1. TEST 1](https://github.com/pinezapple/20202-Stock-Project/tree/main/systemX/Price_Generator/_0_Model_test_file/Test124032020)
+- [2. TEST 2](https://github.com/pinezapple/20202-Stock-Project/tree/main/systemX/Price_Generator/_0_Model_test_file/Test042020)
 
 ### [1. Chức năng các file :](#1-chức-năng-các-file-)
 
