@@ -24,7 +24,13 @@ _ [**Các tài liệu khác**](https://drive.google.com/drive/u/0/folders/1HEeWt
 
 ## Tổng quan hệ thống:
 
-### SystemX
+### Thông tin về stock:
+Dữ liệu được cập nhật mới nhất từ Yahoo Finance (sử dụng [**Yahoo Finance API**](https://rapidapi.com/finance.yahoo.api/api/yahoo-finance-low-latency))
+![StockSummary](Picture/193744382_939014623333156_4951387090101229841_n.png)
+Tin tức liên quan đến cổ phiếu được cập nhật mới nhất [**NewsAPI**](https://newsapi.org/docs/get-started)
+![StockNews](Picture/192463591_159855842821064_812452028416744831_n.png)
+
+### Prediction - SystemX
 
 - Hệ thống bao gồm 3 components chính là:
     + Data Crawler (getStockData)
