@@ -31,13 +31,20 @@ _ [**Các tài liệu khác**](https://drive.google.com/drive/u/0/folders/1HEeWt
 ![StockChart](Picture/192189848_1807477476081090_8891646324303643104_n.png)
 -Tin tức liên quan đến cổ phiếu được cập nhật mới nhất [**NewsAPI**](https://newsapi.org/docs/get-started)
 ![StockNews](Picture/192463591_159855842821064_812452028416744831_n.png)
+-Dữ liệu dự đoán giá cổ phiếu
+![StockPrediction](Picture/stock-prediction-demo.png)
 
 ### Prediction - SystemX
 
 - Hệ thống bao gồm 3 components chính là:
-    + Data Crawler (getStockData)
+    + Data Crawler (getStockData)()
+    ![dockerImage3](https://hub.docker.com/repository/docker/pinezapple/stock-project-crawler) 
+
     + Price Generator
-    + Poral API
+    ![dockerImage2](https://hub.docker.com/repository/docker/pinezapple/lsmt-stock-model)
+
+    + Poral API 
+    ![dockerImage3](https://hub.docker.com/repository/docker/pinezapple/stock-portal) 
 
 - Dưới đây là hình ảnh tổng quan về sơ đồ  các components hệ thống tương tác:
 ![SystemOverall](Picture/image.png)

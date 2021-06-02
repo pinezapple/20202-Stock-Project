@@ -57,6 +57,7 @@ func (s *stockDAO) GetPriceByTicker(ctx context.Context, db *sql.DB, modelName, 
 	}
 
 	GetPriceByTickerQuery := GetPriceByTickerQueryComponent1 + "predicted_" + modelName + GetPriceBytickerQueryComponent2
+	fmt.Println(GetPriceByTickerQuery)
 	rows, err := db.QueryContext(ctx, GetPriceByTickerQuery, ticker, start, end)
 	if err != nil {
 		return nil, err
@@ -87,13 +88,18 @@ func (s *stockDAO) GetTickerRealPrice(ctx context.Context, db *sql.DB, ticker, s
 
 	GetPriceByTickerQuery := GetRealPriceByTickerQueryComponent1 + ticker + GetRealPriceByTickerQueryComponent2
 	fmt.Println(GetPriceByTickerQuery)
+	fmt.Println("Selecting real price")
+	fmt.Println(start)
+	fmt.Println(end)
 	rows, err := db.QueryContext(ctx, GetPriceByTickerQuery, start, end)
 	if err != nil {
 		return nil, err
 	}
+	fmt.Println(rows)
 
 	defer rows.Close()
 	for rows.Next() {
+		fmt.Println("in here")
 		var tg = model.RealPrice{}
 		err := rows.Scan(&tg.Close, &tg.Timestamp)
 		if err != nil {

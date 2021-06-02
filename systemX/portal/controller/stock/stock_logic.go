@@ -31,14 +31,14 @@ func getPredictedPriceByTicket(c echo.Context, request interface{}) (statusCode 
 	req, ctx := request.(*model.TicketRequest), c.Request().Context()
 	lg = &model.LogFormat{Source: c.Request().RemoteAddr, Action: "Get price by ticker "}
 	db := core.GetDB()
-	//conf := core.GetConfig()
+	conf := core.GetConfig()
 	sDAO := dao.GetStockDAO()
 
 	fmt.Println(req)
 	froms := strings.Split(req.From, "/")
 	tos := strings.Split(req.To, "/")
-	from := froms[2] + "-" + froms[0] + "-" + froms[1]
-	to := tos[2] + "-" + tos[0] + "-" + tos[1]
+	from := froms[2] + "-" + froms[0] + "-" + froms[1] + " 0:00:01"
+	to := tos[2] + "-" + tos[0] + "-" + tos[1] + " 23:59:59"
 	fmt.Println(from)
 	fmt.Println(to)
 
@@ -51,21 +51,19 @@ func getPredictedPriceByTicket(c echo.Context, request interface{}) (statusCode 
 		return
 	}
 
-	fmt.Println("real price")
-	fmt.Println(realPrice)
-	/*
-		var predicted [][]*model.StockPredicted
-		for i := 0; i < len(conf.ModelName); i++ {
-			var tmp []*model.StockPredicted
-			tmp, err = sDAO.GetPriceByTicker(ctx, db, conf.ModelName[i], req.Name, from, to)
-			//tmp, err = sDAO.GetPriceByTicker(ctx, db, conf.ModelName[i], req.Name, req.From, req.To)
-			if err != nil {
-				statusCode = http.StatusInternalServerError
-				return
-			}
-			predicted = append(predicted, tmp)
+	var predicted [][]*model.StockPredicted
+	for i := 0; i < len(conf.ModelName); i++ {
+		var tmp []*model.StockPredicted
+		tmp, err = sDAO.GetPriceByTicker(ctx, db, conf.ModelName[i], req.Name, from, to)
+		//tmp, err = sDAO.GetPriceByTicker(ctx, db, conf.ModelName[i], req.Name, req.From, req.To)
+		if err != nil {
+			statusCode = http.StatusInternalServerError
+			return
 		}
-	*/
+		predicted = append(predicted, tmp)
+	}
+	fmt.Println(predicted)
+
 	var respRealPrice []float32
 	var timestamps []string
 	var predicted1, predicted2 []float32
@@ -75,37 +73,40 @@ func getPredictedPriceByTicket(c echo.Context, request interface{}) (statusCode 
 
 		// enable for testing purpose
 		timestamps = append(timestamps, realPrice[i].Timestamp)
-		predicted1 = append(predicted1, realPrice[i].Close)
-		predicted2 = append(predicted2, realPrice[i].Close)
+		//predicted1 = append(predicted1, 0)
+		//predicted2 = append(predicted2, 0)
 	}
 
-	/*
-		for i := 0; i < len(predicted[0]); i++ {
-			timestamps = append(timestamps, predicted[0][i].Timestamp)
-			predicted1 = append(predicted1, predicted[0][i].Price)
-			predicted2 = append(predicted2, predicted[1][i].Price)
-		}
-			if len(realPrice) < len(predicted[0]) {
-				for i := 0; i < len(predicted[0])-len(realPrice); i++ {
-					respRealPrice = append(respRealPrice, 0)
-				}
-			} else {
-				if len(realPrice) == len(predicted[0]) {
-					// do nothing
-				} else {
-					var predicted1Filter, predicted2Filter []float32
-					for i := 0; i < len(realPrice)-len(predicted[0]); i++ {
-						predicted1Filter = append(predicted1Filter, 0)
-						predicted2Filter = append(predicted2Filter, 0)
-					}
-					predicted1Filter = append(predicted1Filter, predicted1...)
-					predicted2Filter = append(predicted2Filter, predicted2...)
+	for i := 0; i < len(predicted[0]); i++ {
+		timestamps = append(timestamps, predicted[0][i].Timestamp)
+		predicted1 = append(predicted1, predicted[0][i].Price)
+		predicted2 = append(predicted2, predicted[1][i].Price)
+	}
 
-					predicted1 = predicted1Filter
-					predicted2 = predicted2Filter
-				}
+	if len(realPrice) < len(predicted[0]) {
+		for i := 0; i < len(predicted[0])-len(realPrice); i++ {
+			respRealPrice = append(respRealPrice, 0)
+		}
+	} else {
+		if len(realPrice) == len(predicted[0]) {
+			// do nothing
+		} else {
+			var predicted1Filter, predicted2Filter []float32
+			for i := 0; i < len(realPrice); i++ {
+				predicted1Filter = append(predicted1Filter, 0)
+				predicted2Filter = append(predicted2Filter, 0)
 			}
-	*/
+			for i := 0; i < len(predicted[0]); i++ {
+				respRealPrice = append(respRealPrice, 0)
+			}
+			predicted1Filter = append(predicted1Filter, predicted1...)
+			predicted2Filter = append(predicted2Filter, predicted2...)
+
+			predicted1 = predicted1Filter
+			predicted2 = predicted2Filter
+		}
+	}
+
 	resp.Ticker = req.Name
 	resp.Timestamp = timestamps
 	resp.ActualPrice = respRealPrice
