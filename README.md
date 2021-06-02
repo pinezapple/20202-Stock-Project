@@ -38,13 +38,13 @@ _ [**Các tài liệu khác**](https://drive.google.com/drive/u/0/folders/1HEeWt
 
 - Hệ thống bao gồm 3 components chính là:
     + Data Crawler (getStockData)()
-    ![dockerImage3](https://hub.docker.com/repository/docker/pinezapple/stock-project-crawler) 
+    [Docker image](https://hub.docker.com/repository/docker/pinezapple/stock-project-crawler) 
 
     + Price Generator
-    ![dockerImage2](https://hub.docker.com/repository/docker/pinezapple/lsmt-stock-model)
+    [Docker image](https://hub.docker.com/repository/docker/pinezapple/lsmt-stock-model)
 
     + Poral API 
-    ![dockerImage3](https://hub.docker.com/repository/docker/pinezapple/stock-portal) 
+    [Docker image](https://hub.docker.com/repository/docker/pinezapple/stock-portal) 
 
 - Dưới đây là hình ảnh tổng quan về sơ đồ  các components hệ thống tương tác:
 ![SystemOverall](Picture/image.png)
