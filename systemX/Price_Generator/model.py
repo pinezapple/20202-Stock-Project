@@ -32,20 +32,20 @@ def create_model(input_length):
     metrics = modelConfig.metrics
     optimizer = modelConfig.optimizer
     activation = modelConfig.activation
-    if modelConfig.name == "LSTM":
-        cell = LSTM
-        model = Sequential()
-        for i in range(n_layers):
-            # define the first layer
-            if i == 0:
-                model.add(cell(units, return_sequences=True, input_shape=(None, input_length)))
-            # define the first layer
-            elif i == n_layers - 1:
-                model.add(cell(units, return_sequences=False))
-            else:
-                model.add(cell(units, return_sequences=True))
-            # add dropout
-            model.add(Dropout(dropout))
+    #if modelConfig.name == "LSTM":
+    cell = LSTM
+    model = Sequential()
+    for i in range(n_layers):
+        # define the first layer
+        if i == 0:
+            model.add(cell(units, return_sequences=True, input_shape=(None, input_length)))
+        # define the first layer
+        elif i == n_layers - 1:
+            model.add(cell(units, return_sequences=False))
+        else:
+            model.add(cell(units, return_sequences=True))
+        # add dropout
+        model.add(Dropout(dropout))
         model.add(Dense(1, activation=activation))
         model.compile(loss=loss, metrics=[metrics], optimizer=optimizer)
 
