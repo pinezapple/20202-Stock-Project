@@ -9,8 +9,6 @@ const rest = {
     method: 'GET',
     url: 'https://yahoo-finance-low-latency.p.rapidapi.com/v11/finance/quoteSummary/'+ticker,
     headers: {
-      'x-rapidapi-key': '4f545a084fmsh68cbc4b65e83956p153360jsnc888a2054a67',
-      'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
     }
   };
 

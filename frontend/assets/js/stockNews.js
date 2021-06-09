@@ -13,7 +13,6 @@ let news ={
         "pageSize" : 12 
   },
    headers: {
-  'X-Api-Key': '0f3baa968294406481578725d354a302',
 }}
 
 async function getStockNews() {
